@@ -6,6 +6,7 @@
 using std::string;
 
 class Drink{
+protected:
     string name;
     double price;
     string description;
@@ -19,7 +20,7 @@ public:
     string getName() const;
     double getPrice() const;
     string getDescription() const;
-    double tax() const;
+    virtual double tax() const = 0;
 };
 
 #endif // DRINK_H

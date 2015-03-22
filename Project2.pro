@@ -15,10 +15,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     meal.cpp \
-    drink.cpp
+    drink.cpp \
+    alcoholic.cpp \
+    nonalcoholic.cpp
 
 HEADERS  += mainwindow.h \
     meal.h \
-    drink.h
+    drink.h \
+    alcoholic.h \
+    nonalcoholic.h
 
 FORMS    += mainwindow.ui

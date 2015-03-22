@@ -14,36 +14,36 @@ Drink::~Drink(){
 
 }
 
-void setName(string name){
+void Drink::setName(string name){
     this->name = name;
 }
 
-void setPrice(double price){
+void Drink::setPrice(double price){
     this->price = price;
 }
 
-void setDescription(string description){
+void Drink::setDescription(string description){
     this->description = description;
 }
 
-string toString() const{
+string Drink::toString() const{
     stringstream ss;
     ss << name << " - " << description << "                     L. " << price;
     return ss.str();
 }
 
-string getName() const{
+string Drink::getName() const{
     return name;
 }
 
-double getPrice() const{
+double Drink::getPrice() const{
     return price;
 }
 
-string getDescription() const{
+string Drink::getDescription() const{
     return description;
 }
 
-double tax() const{
+double Drink::tax() const{
     return price * 0.15;
 }
