@@ -17,12 +17,28 @@ SOURCES += main.cpp\
     meal.cpp \
     drink.cpp \
     alcoholic.cpp \
-    nonalcoholic.cpp
+    nonalcoholic.cpp \
+    clients.cpp \
+    addclient.cpp \
+    client.cpp \
+    coorporateclient.cpp \
+    premiumclient.cpp \
+    regularclient.cpp \
+    bill.cpp
 
 HEADERS  += mainwindow.h \
     meal.h \
     drink.h \
     alcoholic.h \
-    nonalcoholic.h
+    nonalcoholic.h \
+    clients.h \
+    addclient.h \
+    client.h \
+    coorporateclient.h \
+    premiumclient.h \
+    regularclient.h \
+    bill.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    clients.ui \
+    addclient.ui
