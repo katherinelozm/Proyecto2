@@ -28,7 +28,7 @@ void Meal::setDescription(string description){
 
 string Meal::toString() const{
     stringstream ss;
-    ss << name << " - " << description << "                     L. " << price;
+    ss << name << " - " << description << "                     $ " << price;
     return ss.str();
 }
 

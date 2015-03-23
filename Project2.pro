@@ -24,7 +24,11 @@ SOURCES += main.cpp\
     coorporateclient.cpp \
     premiumclient.cpp \
     regularclient.cpp \
-    bill.cpp
+    bill.cpp \
+    newbill.cpp \
+    editclient.cpp \
+    deleteclient.cpp \
+    reports.cpp
 
 HEADERS  += mainwindow.h \
     meal.h \
@@ -37,8 +41,16 @@ HEADERS  += mainwindow.h \
     coorporateclient.h \
     premiumclient.h \
     regularclient.h \
-    bill.h
+    bill.h \
+    newbill.h \
+    editclient.h \
+    deleteclient.h \
+    reports.h
 
 FORMS    += mainwindow.ui \
     clients.ui \
-    addclient.ui
+    addclient.ui \
+    newbill.ui \
+    editclient.ui \
+    deleteclient.ui \
+    reports.ui

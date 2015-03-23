@@ -28,7 +28,7 @@ void Drink::setDescription(string description){
 
 string Drink::toString() const{
     stringstream ss;
-    ss << name << " - " << description << "                     L. " << price;
+    ss << name << " - " << description << "                     $ " << price;
     return ss.str();
 }
 
