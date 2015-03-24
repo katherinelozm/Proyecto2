@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images.jpg</file>
+        <file>images2.png</file>
+        <file>analytics-512.png</file>
+        <file>users-add-user-icon.png</file>
+        <file>users-edit-user-icon.png</file>
+        <file>users-remove-user-icon.png</file>
+        <file>images-8.jpeg</file>
+    </qresource>
+</RCC>

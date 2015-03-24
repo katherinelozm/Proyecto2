@@ -57,7 +57,7 @@
     <string>Delete Client</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox_4">
+  <widget class="QComboBox" name="cb_clients">
    <property name="geometry">
     <rect>
      <x>139</x>

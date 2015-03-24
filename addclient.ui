@@ -109,17 +109,17 @@
     <string>Years:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="le_name">
    <property name="geometry">
     <rect>
-     <x>172</x>
-     <y>71</y>
+     <x>173</x>
+     <y>72</y>
      <width>211</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="cb_gender">
    <property name="geometry">
     <rect>
      <x>169</x>
@@ -139,7 +139,7 @@
     </property>
    </item>
   </widget>
-  <widget class="QComboBox" name="comboBox_2">
+  <widget class="QComboBox" name="cb_type">
    <property name="geometry">
     <rect>
      <x>169</x>
@@ -150,7 +150,7 @@
    </property>
    <item>
     <property name="text">
-     <string>Corporate</string>
+     <string>Regular</string>
     </property>
    </item>
    <item>
@@ -160,11 +160,14 @@
    </item>
    <item>
     <property name="text">
-     <string>Regular</string>
+     <string>Corporate</string>
     </property>
    </item>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="le_company">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>172</x>
@@ -174,7 +177,10 @@
     </rect>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="sb_years">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>172</x>
@@ -200,109 +206,17 @@
     <string>Add Client</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_2">
+  <widget class="QLineEdit" name="le_birthday">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>100</y>
-     <width>47</width>
-     <height>24</height>
+     <x>173</x>
+     <y>103</y>
+     <width>211</width>
+     <height>21</height>
     </rect>
    </property>
-   <property name="minimum">
-    <number>1</number>
-   </property>
-   <property name="maximum">
-    <number>31</number>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="comboBox_3">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>100</y>
-     <width>104</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>January</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>February</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>March</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>April</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>May</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>June</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>July</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>August</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>September</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>October</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>November</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>December</string>
-    </property>
-   </item>
-  </widget>
-  <widget class="QSpinBox" name="spinBox_3">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>100</y>
-     <width>61</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>1900</number>
-   </property>
-   <property name="maximum">
-    <number>2015</number>
-   </property>
-   <property name="value">
-    <number>1970</number>
+   <property name="text">
+    <string>January 1, 1989</string>
    </property>
   </widget>
  </widget>

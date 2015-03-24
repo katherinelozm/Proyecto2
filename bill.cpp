@@ -20,7 +20,7 @@ Bill::~Bill(){
 
 string Bill::toString() const{
     stringstream ss;
-    ss << text << "\n" << "Bill Number: " << number << "\n" << "Client: " << client_name << "\n";
+    ss << text << "\n" << "Bill Number: " << number << "\n" << "Client: " << client_name << "\n\n";
     for (unsigned long i = 0; i < meals.size(); i++)
         ss << meals[i]->toString() << "\n";
     for (unsigned long i = 0; i < drinks.size(); i++)

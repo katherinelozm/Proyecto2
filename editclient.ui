@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>404</width>
-    <height>336</height>
+    <height>331</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,7 +26,10 @@
     <string>Edit Client</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="sb_years">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>112</x>
@@ -65,25 +68,6 @@
     <string>Type:</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox_3">
-   <property name="geometry">
-    <rect>
-     <x>295</x>
-     <y>123</y>
-     <width>62</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>1900</number>
-   </property>
-   <property name="maximum">
-    <number>2015</number>
-   </property>
-   <property name="value">
-    <number>1970</number>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
@@ -110,17 +94,20 @@
     <string>Company:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="le_name">
    <property name="geometry">
     <rect>
-     <x>112</x>
-     <y>92</y>
-     <width>125</width>
+     <x>111</x>
+     <y>93</y>
+     <width>201</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox_2">
+  <widget class="QComboBox" name="cb_type">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>109</x>
@@ -145,17 +132,23 @@
     </property>
    </item>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="le_company">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>112</x>
      <y>217</y>
-     <width>125</width>
+     <width>201</width>
      <height>21</height>
     </rect>
    </property>
+   <property name="text">
+    <string/>
+   </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="cb_gender">
    <property name="geometry">
     <rect>
      <x>109</x>
@@ -174,22 +167,6 @@
      <string>Femenine</string>
     </property>
    </item>
-  </widget>
-  <widget class="QSpinBox" name="spinBox_2">
-   <property name="geometry">
-    <rect>
-     <x>238</x>
-     <y>123</y>
-     <width>47</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>1</number>
-   </property>
-   <property name="maximum">
-    <number>31</number>
-   </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -235,76 +212,6 @@
     <string>Years:</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox_3">
-   <property name="geometry">
-    <rect>
-     <x>109</x>
-     <y>123</y>
-     <width>122</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>January</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>February</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>March</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>April</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>May</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>June</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>July</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>August</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>September</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>October</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>November</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>December</string>
-    </property>
-   </item>
-  </widget>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
@@ -318,13 +225,23 @@
     <string>Client: </string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox_4">
+  <widget class="QComboBox" name="cb_client">
    <property name="geometry">
     <rect>
      <x>109</x>
      <y>60</y>
      <width>151</width>
      <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="le_birthday">
+   <property name="geometry">
+    <rect>
+     <x>111</x>
+     <y>124</y>
+     <width>201</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

@@ -19,7 +19,7 @@ public:
     string getName() const;
     double getPrice() const;
     string getDescription() const;
-    virtual double tax() const = 0;
+    virtual double tax() const;
 };
 
 #endif // MEAL_H

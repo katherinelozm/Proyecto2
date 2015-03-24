@@ -54,3 +54,8 @@ FORMS    += mainwindow.ui \
     editclient.ui \
     deleteclient.ui \
     reports.ui
+
+RESOURCES += \
+    pictures.qrc
+
+DISTFILES +=
