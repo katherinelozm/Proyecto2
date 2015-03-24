@@ -13,6 +13,7 @@ public:
     virtual string toString() const;
     virtual double getDiscount(double);
     virtual double getTips(double);
+    string save() const;
 };
 
 #endif // REGULARCLIENT_H

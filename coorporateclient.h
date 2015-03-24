@@ -16,6 +16,7 @@ public:
     void setCompany(string);
     virtual double getDiscount(double);
     virtual double getTips(double);
+    string save() const;
 };
 
 #endif // COORPORATECLIENT_H

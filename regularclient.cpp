@@ -30,3 +30,8 @@ double RegularClient::getTips(double sub){
     return sub * 0.10;
 }
 
+string RegularClient::save() const{
+    stringstream ss;
+    ss << name << " " << birthday << " " << gender;
+    return ss.str();
+}

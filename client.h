@@ -6,6 +6,7 @@
 using std::string;
 
 class Client{
+protected:
     string name;
     string birthday;
     string gender;

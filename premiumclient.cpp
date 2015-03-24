@@ -40,3 +40,9 @@ double PremiumClient::getDiscount(double sub){
 double PremiumClient::getTips(double sub){
     return sub * 0.10;
 }
+
+string PremiumClient::save() const{
+    stringstream ss;
+    ss << name << " " << birthday << " " << gender << " " << years;
+    return ss.str();
+}

@@ -36,3 +36,9 @@ double CoorporateClient::getDiscount(double sub){
 double CoorporateClient::getTips(double sub){
     return sub * 0.15;
 }
+
+string CoorporateClient::save() const{
+    stringstream ss;
+    ss << name << " " << birthday << " " << gender << " " << company;
+    return ss.str();
+}

@@ -44,6 +44,7 @@ public:
     void setTax18(double);
     void setTips(double);
     void setTotal(double);
+    string save_toString() const;
 };
 
 #endif // BILL_H

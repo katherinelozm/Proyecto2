@@ -15,8 +15,12 @@ EditClient::EditClient(vector<Client*>* clients, QWidget *parent) :
 {
     ui->setupUi(this);
     this->clients = clients;
-    for (unsigned long i = 0; i < clients->size(); i++){
-        ui->cb_client->addItem(clients->at(i)->toString().c_str());
+    if (clients->size() > 0){
+        for (unsigned long i = 0; i < clients->size(); i++){
+            ui->cb_client->addItem(clients->at(i)->toString().c_str());
+        }
+    } else {
+        this->close();
     }
     ui->le_name->setText(clients->at(0)->getName().c_str());
     ui->le_birthday->setText(clients->at(0)->getBirthDay().c_str());

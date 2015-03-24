@@ -125,8 +125,6 @@ MainWindow::MainWindow(QWidget *parent) :
         }
     }
     file3.close();
-    //Read Bills
-
 }
 
 MainWindow::~MainWindow()
@@ -147,4 +145,63 @@ void MainWindow::on_pushButton_2_clicked()
 
     NewBill nb(clients, meals, drinks, bills);
     nb.exec();
+}
+
+void MainWindow::on_MainWindow_destroyed()
+{
+    //Corporate
+    ofstream file;
+    file.open("c_clients.txt");
+    if (file.is_open()) {
+        for (int i = 0; i < clients->size(); i++){
+            CoorporateClient* cc = dynamic_cast<CoorporateClient*>(clients->at(i));
+            if (cc){
+                file << cc->getName();
+                file << " ";
+                file << cc->getBirthDay();
+                file << " ";
+                file << cc->getGender();
+                file << " ";
+                file << cc->getCompany();
+                file << "\n";
+            }
+        }
+    }
+    file.close();
+    //Premium
+    ofstream file2;
+    file2.open("p_clients.txt");
+    if (file2.is_open()) {
+        for (int i = 0; i < clients->size(); i++){
+            PremiumClient* pc = dynamic_cast<PremiumClient*>(clients->at(i));
+            if (pc){
+                file << pc->getName();
+                file << " ";
+                file << pc->getBirthDay();
+                file << " ";
+                file << pc->getGender();
+                file << " ";
+                file << pc->getYears();
+                file << "\n";
+            }
+        }
+    }
+    file2.close();
+    //Regular
+    ofstream file3;
+    file3.open("r_clients.txt");
+    if (file3.is_open()) {
+        for (int i = 0; i < clients->size(); i++){
+            RegularClient* rc = dynamic_cast<RegularClient*>(clients->at(i));
+            if (rc){
+                file << rc->getName();
+                file << " ";
+                file << rc->getBirthDay();
+                file << " ";
+                file << rc->getGender();
+                file << "\n";
+            }
+        }
+    }
+    file3.close();
 }

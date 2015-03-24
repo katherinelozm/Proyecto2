@@ -16,6 +16,7 @@ public:
     void setYears(int);
     virtual double getDiscount(double);
     virtual double getTips(double);
+    string save() const;
 };
 
 #endif // PREMIUMCLIENT_H

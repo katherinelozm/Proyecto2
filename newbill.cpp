@@ -73,3 +73,8 @@ void NewBill::on_pushButton_2_clicked(){
     bills->at(bills->size()-1)->setTotal(bills->at(bills->size()-1)->getSub() + bills->at(bills->size()-1)->getTax15() + bills->at(bills->size()-1)->getTax18() + bills->at(bills->size()-1)->getTips());
     ui->textEdit->setText(bills->at(bills->size()-1)->toString().c_str());
 }
+
+void NewBill::on_pushButton_3_clicked()
+{
+    this->close();
+}
