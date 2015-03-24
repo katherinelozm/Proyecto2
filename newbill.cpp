@@ -4,6 +4,8 @@
 #include "meal.h"
 #include "drink.h"
 #include "bill.h"
+#include "alcoholic.h"
+#include "nonalcoholic.h"
 #include <vector>
 
 using std::vector;
@@ -41,8 +43,33 @@ NewBill::~NewBill(){
 void NewBill::on_pushButton_4_clicked(){
     bills->at(bills->size()-1)->setClientName(ui->cb_clients->currentText().toStdString());
     ui->textEdit->setText(bills->at(bills->size()-1)->toString().c_str());
-    /*vector<Meal*> m = bills->at(bills->size()-1)->getMeals();
+}
+
+void NewBill::on_pushButton_clicked(){
+    vector<Meal*> m = bills->at(bills->size()-1)->getMeals();
     m.push_back(meals->at(ui->cb_meals->currentIndex()));
     bills->at(bills->size()-1)->setMeals(m);
-    ui->textEdit->setText(bills->at(bills->size()-1)->toString().c_str());*/
+    bills->at(bills->size()-1)->setSub(meals->at(ui->cb_meals->currentIndex())->getPrice() + bills->at(bills->size()-1)->getSub());
+    bills->at(bills->size()-1)->setTax15(meals->at(ui->cb_meals->currentIndex())->tax() + bills->at(bills->size()-1)->getTax15());
+    bills->at(bills->size()-1)->setTips(clients->at(ui->cb_clients->currentIndex())->getTips(bills->at(bills->size()-1)->getSub()) + bills->at(bills->size()-1)->getTips());
+    bills->at(bills->size()-1)->setTotal(bills->at(bills->size()-1)->getSub() + bills->at(bills->size()-1)->getTax15() + bills->at(bills->size()-1)->getTax18() + bills->at(bills->size()-1)->getTips());
+    ui->textEdit->setText(bills->at(bills->size()-1)->toString().c_str());
+
+}
+
+void NewBill::on_pushButton_2_clicked(){
+    vector<Drink*> d = bills->at(bills->size()-1)->getDrinks();
+    d.push_back(drinks->at(ui->cb_drinks->currentIndex()));
+    bills->at(bills->size()-1)->setDrinks(d);
+    bills->at(bills->size()-1)->setSub(drinks->at(ui->cb_drinks->currentIndex())->getPrice() + bills->at(bills->size()-1)->getSub());
+    Alcoholic* a = dynamic_cast<Alcoholic*>(drinks->at(ui->cb_drinks->currentIndex()));
+    NonAlcoholic* n = dynamic_cast<NonAlcoholic*>(drinks->at(ui->cb_drinks->currentIndex()));
+    if (a){
+        bills->at(bills->size()-1)->setTax18(a->tax() + bills->at(bills->size()-1)->getTax18());
+    } else {
+        bills->at(bills->size()-1)->setTax15(n->tax() + bills->at(bills->size()-1)->getTax15());
+    }
+    bills->at(bills->size()-1)->setTips(clients->at(ui->cb_drinks->currentIndex())->getTips(bills->at(bills->size()-1)->getSub()) + bills->at(bills->size()-1)->getTips());
+    bills->at(bills->size()-1)->setTotal(bills->at(bills->size()-1)->getSub() + bills->at(bills->size()-1)->getTax15() + bills->at(bills->size()-1)->getTax18() + bills->at(bills->size()-1)->getTips());
+    ui->textEdit->setText(bills->at(bills->size()-1)->toString().c_str());
 }
