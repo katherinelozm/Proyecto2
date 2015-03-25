@@ -23,6 +23,7 @@ void Clients::on_pushButton_clicked()
 {
     AddClient ac(clients);
     ac.exec();
+    this->close();
 }
 
 void Clients::on_pushButton_2_clicked()
@@ -30,6 +31,7 @@ void Clients::on_pushButton_2_clicked()
     if (clients->size() > 0){
         EditClient ec(clients);
         ec.exec();
+        this->close();
     }
 }
 
@@ -38,5 +40,6 @@ void Clients::on_pushButton_3_clicked()
     if (clients->size() > 0){
         DeleteClient dc(clients);
         dc.exec();
+        this->close();
     }
 }

@@ -38,30 +38,19 @@ void AddClient::on_pushButton_clicked()
         CoorporateClient* cc = new CoorporateClient(name.toStdString(), birthday.toStdString(), gender.toStdString(), company.toStdString());
         clients->push_back(cc);
         QMessageBox::information(this, "Create", "Successfully created");
-        ui->le_name->setText("");
-        ui->le_birthday->setText("January 1, 1989");
-        ui->cb_gender->setCurrentIndex(0);
-        ui->cb_type->setCurrentIndex(2);
-        ui->le_company->setText("");
+        this->close();
     } else if (type == "Premium"){
         int years;
         years = ui->sb_years->value();
         PremiumClient* pc = new PremiumClient(name.toStdString(), birthday.toStdString(), gender.toStdString(), years);
         clients->push_back(pc);
         QMessageBox::information(this, "Create", "Successfully created");
-        ui->le_name->setText("");
-        ui->le_birthday->setText("January 1, 1989");
-        ui->cb_gender->setCurrentIndex(0);
-        ui->cb_type->setCurrentIndex(2);
-        ui->sb_years->setValue(0);
+        this->close();
     } else {
         RegularClient* rc = new RegularClient(name.toStdString(), birthday.toStdString(), gender.toStdString());
         clients->push_back(rc);
         QMessageBox::information(this, "Create", "Successfully created");
-        ui->le_name->setText("");
-        ui->le_birthday->setText("January 1, 1989");
-        ui->cb_gender->setCurrentIndex(0);
-        ui->cb_type->setCurrentIndex(2);
+        this->close();
     }
 }
 
