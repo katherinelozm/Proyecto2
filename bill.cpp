@@ -9,8 +9,8 @@ using std::string;
 using std::vector;
 using std::stringstream;
 
-Bill::Bill(string text, int number, string client_name, vector<Meal*> meals, vector<Drink*> drinks, double sub, double tax15, double tax18, double tips, double total)
-    :text(text), number(number), client_name(client_name), meals(meals), drinks(drinks), sub(sub), tax15(tax15), tax18(tax18), tips(tips), total(total) {
+Bill::Bill(string text, int number, string client_name, vector<Meal*> meals, vector<Drink*> drinks, double sub, double tax15, double tax18, double discount, double tips, double total)
+    :text(text), number(number), client_name(client_name), meals(meals), drinks(drinks), sub(sub), tax15(tax15), tax18(tax18), discount(discount), tips(tips), total(total) {
 
 }
 
@@ -25,11 +25,12 @@ string Bill::toString() const{
         ss << meals[i]->toString() << "\n";
     for (unsigned long i = 0; i < drinks.size(); i++)
         ss << drinks[i]->toString() << "\n";
-    ss << "\n" << "\n" << "Subtotal:  $ " << sub << "\n";
-    ss << "15% Tax:   $ " << tax15 << "\n";
-    ss << "18% Tax:   $ " << tax18 << "\n";
-    ss << "Tips:      $ " << tips << "\n";
-    ss << "Total:     $ " << total << "\n";
+    ss << "\n" << "\n" << "Subtotal: " << "$" << sub << "\n";
+    ss << "Discount: " << "$" << discount << "\n";
+    ss << "15% Tax: " << "$" << tax15 << "\n";
+    ss << "18% Tax: " << "$" << tax18 << "\n";
+    ss << "Tips: " << "$" << tips << "\n";
+    ss << "Total: " << "$" << total << "\n";
     return ss.str();
 }
 
@@ -63,6 +64,10 @@ double Bill::getTax15() const{
 
 double Bill::getTax18() const{
     return tax18;
+}
+
+double Bill::getDiscount() const{
+    return discount;
 }
 
 double Bill::getTips() const{
@@ -103,6 +108,10 @@ void Bill::setTax15(double tax15){
 
 void Bill::setTax18(double tax18){
     this->tax18 = tax18;
+}
+
+void Bill::setDiscount(double discount){
+    this->discount = discount;
 }
 
 void Bill::setTips(double tips){

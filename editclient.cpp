@@ -6,8 +6,11 @@
 #include "client.h"
 #include <vector>
 #include <QMessageBox>
+#include <iostream>;
 
 using std::vector;
+using std::cout;
+using std::endl;
 
 EditClient::EditClient(vector<Client*>* clients, QWidget *parent) :
     QDialog(parent),
@@ -65,43 +68,42 @@ void EditClient::on_pushButton_clicked()
     gender = ui->cb_gender->currentText();
     QString type;
     type = ui->cb_type->currentText();
+    cout << "1" << endl;
     if (type == "Corporate"){
         QString company;
         company = ui->le_company->text();
-        clients->at(index)->setName(name.toStdString());
-        clients->at(index)->setBirthday(birthday.toStdString());
-        clients->at(index)->setGender(gender.toStdString());
         CoorporateClient* c = dynamic_cast<CoorporateClient*>(clients->at(0));
+        c->setName(name.toStdString());
+        c->setBirthday(birthday.toStdString());
+        c->setGender(gender.toStdString());
         c->setCompany(company.toStdString());
         QMessageBox::information(this, "Edit", "Successfully edited");
-        ui->le_name->setText("");
+        int answer;
+        answer = QMessageBox::question(this, "Continue", "Do you want to continue editing?", QMessageBox::Yes, QMessageBox::No);
+        if (answer == 0){
+            ui->cb_client->setCurrentIndex(0);
+            ui->le_name->setText(QString::fromStdString(clients->at(0)->getName()));
+            ui->le_birthday->setText("");
+            ui->cb_gender->setCurrentIndex(0);
 
-        ui->cb_gender->setCurrentIndex(0);
-        ui->cb_type->setCurrentIndex(2);
-        ui->le_company->setText("");
+        } else {
+            this->close();
+        }
     } else if (type == "Premium"){
         int years;
         years = ui->sb_years->value();
-        clients->at(index)->setName(name.toStdString());
-        clients->at(index)->setBirthday(birthday.toStdString());
-        clients->at(index)->setGender(gender.toStdString());
         PremiumClient* p = dynamic_cast<PremiumClient*>(clients->at(0));
+        p->setName(name.toStdString());
+        p->setBirthday(birthday.toStdString());
+        p->setGender(gender.toStdString());
         p->setYears(years);
-        QMessageBox::information(this, "Edit", "Successfully edited");
-        ui->le_name->setText("");
+        this->close();
 
-        ui->cb_gender->setCurrentIndex(0);
-        ui->cb_type->setCurrentIndex(2);
-        ui->sb_years->setValue(0);
     } else {
         clients->at(index)->setName(name.toStdString());
         clients->at(index)->setBirthday(birthday.toStdString());
         clients->at(index)->setGender(gender.toStdString());
-        QMessageBox::information(this, "Edit", "Successfully edited");
-        ui->le_name->setText("");
-
-        ui->cb_gender->setCurrentIndex(0);
-        ui->cb_type->setCurrentIndex(2);
+    this->close();
     }
 }
 

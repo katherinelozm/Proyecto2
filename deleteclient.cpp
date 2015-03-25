@@ -28,6 +28,7 @@ DeleteClient::~DeleteClient()
 void DeleteClient::on_pushButton_clicked()
 {
     clients->erase(clients->begin() + ui->cb_clients->currentIndex());
+    QMessageBox::information(this, "Delete" ,"Successfully deleted");
     ui->cb_clients->clear();
     if (clients->size() > 0){
         for (unsigned long i = 0; i < clients->size(); i++){

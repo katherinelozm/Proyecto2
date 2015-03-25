@@ -16,6 +16,7 @@
 #include <sstream>
 #include <string>
 #include <iostream>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -29,13 +30,15 @@ MainWindow::MainWindow(QWidget *parent) :
     drinks = new vector<Drink*>();
     bills = new vector<Bill*>();
     meals->push_back(new Meal("Grilled Steak", 30, "16 oz"));
-    meals->push_back(new Meal("Pork Chops", 20, "Onion Sauce"));
+    meals->push_back(new Meal("Pork Chops", 20, ""));
     meals->push_back(new Meal("Grilled Chicken", 23, "Chicken Breast"));
     meals->push_back(new Meal("Shrimps", 35, "Garlic/Breaded/Grilled"));
-    drinks->push_back(new Alcoholic("Red Wine", 7.50, "Merlot"));
-    drinks->push_back(new Alcoholic("Heineken", 3.75, "Beer"));
     drinks->push_back(new NonAlcoholic("Coke", 3.50, "Bottle"));
+    drinks->push_back(new NonAlcoholic("Coke", 3.50, "Can"));
     drinks->push_back(new NonAlcoholic("Lemonade", 4, ""));
+    drinks->push_back(new Alcoholic("Wine", 7.50, "Merlot"));
+    drinks->push_back(new Alcoholic("Wine", 7.50, "White"));
+    drinks->push_back(new Alcoholic("Heineken", 3.75, "Beer"));
     //Read Clients
     //Regular
     string name;
@@ -143,8 +146,12 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
 
-    NewBill nb(clients, meals, drinks, bills);
-    nb.exec();
+    if (clients->size() > 0){
+        NewBill nb(clients, meals, drinks, bills);
+        nb.exec();
+    } else {
+        QMessageBox::information(this, "Bill" ,"You must create a client before making a bill!");
+    }
 }
 
 void MainWindow::on_MainWindow_destroyed()
