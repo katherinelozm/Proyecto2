@@ -14,8 +14,8 @@ public:
     virtual string toString() const;
     string getCompany() const;
     void setCompany(string);
-    virtual double getDiscount(double);
-    virtual double getTips(double);
+    virtual double getDiscount();
+    virtual double getTips();
     string save() const;
 };
 

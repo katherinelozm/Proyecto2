@@ -29,16 +29,16 @@ void PremiumClient::setYears(int years){
     this->years = years;
 }
 
-double PremiumClient::getDiscount(double sub){
+double PremiumClient::getDiscount(){
     if (years < 5){
-        return sub * (5*years/100);
+        return 5*years/100;
     } else {
-        return sub * 0.25;
+        return 0.25;
     }
 }
 
-double PremiumClient::getTips(double sub){
-    return sub * 0.10;
+double PremiumClient::getTips(){
+    return 0.10;
 }
 
 string PremiumClient::save() const{

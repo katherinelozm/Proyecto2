@@ -14,8 +14,8 @@ public:
     virtual string toString() const;
     int getYears() const;
     void setYears(int);
-    virtual double getDiscount(double);
-    virtual double getTips(double);
+    virtual double getDiscount();
+    virtual double getTips();
     string save() const;
 };
 

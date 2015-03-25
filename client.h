@@ -17,8 +17,8 @@ public:
     string getName() const;
     string getBirthDay() const;
     string getGender() const;
-    virtual double getDiscount(double) = 0;
-    virtual double getTips(double) = 0;
+    virtual double getDiscount();
+    virtual double getTips();
     void setName(string);
     void setBirthday(string);
     void setGender(string);

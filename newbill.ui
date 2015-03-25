@@ -32,6 +32,9 @@
    </property>
   </widget>
   <widget class="QComboBox" name="cb_drinks">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>200</x>
@@ -42,6 +45,9 @@
    </property>
   </widget>
   <widget class="QComboBox" name="cb_meals">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -52,6 +58,9 @@
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -65,6 +74,9 @@
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>330</x>

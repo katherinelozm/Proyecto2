@@ -22,12 +22,12 @@ string RegularClient::toString() const{
     return ss.str();
 }
 
-double RegularClient::getDiscount(double sub){
-    return sub * 0.0;
+double RegularClient::getDiscount(){
+    return 0.0;
 }
 
-double RegularClient::getTips(double sub){
-    return sub * 0.10;
+double RegularClient::getTips(){
+    return 0.10;
 }
 
 string RegularClient::save() const{

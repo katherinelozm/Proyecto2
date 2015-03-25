@@ -33,12 +33,12 @@ string Client::getGender() const{
     return gender;
 }
 
-double Client::getDiscount(double sub){
-    return sub * 0.0;
+double Client::getDiscount(){
+    return 0.0;
 }
 
-double Client::getTips(double sub){
-    return sub * 0.0;
+double Client::getTips(){
+    return 0.0;
 }
 
 void Client::setName(string name){

@@ -27,12 +27,16 @@ void Clients::on_pushButton_clicked()
 
 void Clients::on_pushButton_2_clicked()
 {
-    EditClient ec(clients);
-    ec.exec();
+    if (clients->size() > 0){
+        EditClient ec(clients);
+        ec.exec();
+    }
 }
 
 void Clients::on_pushButton_3_clicked()
 {
-    DeleteClient dc(clients);
-    dc.exec();
+    if (clients->size() > 0){
+        DeleteClient dc(clients);
+        dc.exec();
+    }
 }

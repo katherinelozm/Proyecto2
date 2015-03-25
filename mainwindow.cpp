@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
     string birthday;
     string gender;
     ifstream file;
-    file.open("r_clients.txt");
+    file.open("./r_clients.txt");
     string line;
     int cont;
     if (file.is_open()) {
@@ -71,7 +71,7 @@ MainWindow::MainWindow(QWidget *parent) :
     string gender2;
     string company;
     ifstream file2;
-    file2.open("c_clients.txt");
+    file2.open("./c_clients.txt");
     string line2;
     if (file2.is_open()) {
         while (getline(file2, line2)) {
@@ -101,7 +101,7 @@ MainWindow::MainWindow(QWidget *parent) :
     string gender3;
     int years;
     ifstream file3;
-    file3.open("p_clients.txt");
+    file3.open("./p_clients.txt");
     string line3;
     if (file3.is_open()) {
         while (getline(file3, line3)) {
@@ -151,9 +151,9 @@ void MainWindow::on_MainWindow_destroyed()
 {
     //Corporate
     ofstream file;
-    file.open("c_clients.txt");
+    file.open("./c_clients.txt");
     if (file.is_open()) {
-        for (int i = 0; i < clients->size(); i++){
+        for (unsigned long i = 0; i < clients->size(); i++){
             CoorporateClient* cc = dynamic_cast<CoorporateClient*>(clients->at(i));
             if (cc){
                 file << cc->getName();
@@ -170,9 +170,9 @@ void MainWindow::on_MainWindow_destroyed()
     file.close();
     //Premium
     ofstream file2;
-    file2.open("p_clients.txt");
+    file2.open("./p_clients.txt");
     if (file2.is_open()) {
-        for (int i = 0; i < clients->size(); i++){
+        for (unsigned long i = 0; i < clients->size(); i++){
             PremiumClient* pc = dynamic_cast<PremiumClient*>(clients->at(i));
             if (pc){
                 file << pc->getName();
@@ -189,9 +189,9 @@ void MainWindow::on_MainWindow_destroyed()
     file2.close();
     //Regular
     ofstream file3;
-    file3.open("r_clients.txt");
+    file3.open("./r_clients.txt");
     if (file3.is_open()) {
-        for (int i = 0; i < clients->size(); i++){
+        for (unsigned long i = 0; i < clients->size(); i++){
             RegularClient* rc = dynamic_cast<RegularClient*>(clients->at(i));
             if (rc){
                 file << rc->getName();

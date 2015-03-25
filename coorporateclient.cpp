@@ -29,12 +29,12 @@ void CoorporateClient::setCompany(string company){
     this->company = company;
 }
 
-double CoorporateClient::getDiscount(double sub){
-    return sub * 0.05;
+double CoorporateClient::getDiscount(){
+    return 0.05;
 }
 
-double CoorporateClient::getTips(double sub){
-    return sub * 0.15;
+double CoorporateClient::getTips(){
+    return 0.15;
 }
 
 string CoorporateClient::save() const{
