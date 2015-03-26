@@ -68,11 +68,10 @@ void EditClient::on_pushButton_clicked()
     gender = ui->cb_gender->currentText();
     QString type;
     type = ui->cb_type->currentText();
-    cout << "1" << endl;
     if (type == "Corporate"){
         QString company;
         company = ui->le_company->text();
-        CoorporateClient* c = dynamic_cast<CoorporateClient*>(clients->at(0));
+        CoorporateClient* c = dynamic_cast<CoorporateClient*>(clients->at(index));
         c->setName(name.toStdString());
         c->setBirthday(birthday.toStdString());
         c->setGender(gender.toStdString());
@@ -80,30 +79,114 @@ void EditClient::on_pushButton_clicked()
         QMessageBox::information(this, "Edit", "Successfully edited");
         int answer;
         answer = QMessageBox::question(this, "Continue", "Do you want to continue editing?", QMessageBox::Yes, QMessageBox::No);
-        if (answer == 0){
-            ui->cb_client->setCurrentIndex(0);
-            ui->le_name->setText(QString::fromStdString(clients->at(0)->getName()));
-            ui->le_birthday->setText("");
-            ui->cb_gender->setCurrentIndex(0);
-
+        if (answer == QMessageBox::Yes){
+            CoorporateClient* c = dynamic_cast<CoorporateClient*>(clients->at(0));
+            PremiumClient* p = dynamic_cast<PremiumClient*>(clients->at(0));
+            RegularClient* r = dynamic_cast<RegularClient*>(clients->at(0));
+            if (c){
+                ui->cb_client->setCurrentIndex(0);
+                ui->le_name->setText(QString::fromStdString(clients->at(0)->getName().c_str()));
+                ui->le_birthday->setText(clients->at(0)->getBirthDay().c_str());
+                ui->cb_gender->setCurrentIndex(clients->at(0)->getGender() == "Masculine" ? 0 : 1);
+                ui->le_company->setText(c->getCompany().c_str());
+                ui->le_company->setEnabled(false);
+            }
+            if (p){
+                ui->cb_client->setCurrentIndex(0);
+                ui->le_name->setText(QString::fromStdString(clients->at(0)->getName().c_str()));
+                ui->le_birthday->setText(clients->at(0)->getBirthDay().c_str());
+                ui->cb_gender->setCurrentIndex(clients->at(0)->getGender() == "Masculine" ? 0 : 1);
+                ui->sb_years->setValue(p->getYears());
+                ui->sb_years->setEnabled(false);
+            }
+            if (r){
+                ui->cb_client->setCurrentIndex(0);
+                ui->le_name->setText(QString::fromStdString(clients->at(0)->getName().c_str()));
+                ui->le_birthday->setText(clients->at(0)->getBirthDay().c_str());
+                ui->cb_gender->setCurrentIndex(clients->at(0)->getGender() == "Masculine" ? 0 : 1);
+            }
         } else {
             this->close();
         }
     } else if (type == "Premium"){
         int years;
         years = ui->sb_years->value();
-        PremiumClient* p = dynamic_cast<PremiumClient*>(clients->at(0));
+        PremiumClient* p = dynamic_cast<PremiumClient*>(clients->at(index));
         p->setName(name.toStdString());
         p->setBirthday(birthday.toStdString());
         p->setGender(gender.toStdString());
         p->setYears(years);
-        this->close();
-
+        QMessageBox::information(this, "Edit", "Successfully edited");
+        int answer;
+        answer = QMessageBox::question(this, "Continue", "Do you want to continue editing?", QMessageBox::Yes, QMessageBox::No);
+        if (answer == QMessageBox::Yes){
+            CoorporateClient* c = dynamic_cast<CoorporateClient*>(clients->at(0));
+            PremiumClient* p = dynamic_cast<PremiumClient*>(clients->at(0));
+            RegularClient* r = dynamic_cast<RegularClient*>(clients->at(0));
+            if (c){
+                ui->cb_client->setCurrentIndex(0);
+                ui->le_name->setText(QString::fromStdString(clients->at(0)->getName().c_str()));
+                ui->le_birthday->setText(clients->at(0)->getBirthDay().c_str());
+                ui->cb_gender->setCurrentIndex(clients->at(0)->getGender() == "Masculine" ? 0 : 1);
+                ui->le_company->setText(c->getCompany().c_str());
+                ui->le_company->setEnabled(false);
+            }
+            if (p){
+                ui->cb_client->setCurrentIndex(0);
+                ui->le_name->setText(QString::fromStdString(clients->at(0)->getName().c_str()));
+                ui->le_birthday->setText(clients->at(0)->getBirthDay().c_str());
+                ui->cb_gender->setCurrentIndex(clients->at(0)->getGender() == "Masculine" ? 0 : 1);
+                ui->sb_years->setValue(p->getYears());
+                ui->sb_years->setEnabled(false);
+            }
+            if (r){
+                ui->cb_client->setCurrentIndex(0);
+                ui->le_name->setText(QString::fromStdString(clients->at(0)->getName().c_str()));
+                ui->le_birthday->setText(clients->at(0)->getBirthDay().c_str());
+                ui->cb_gender->setCurrentIndex(clients->at(0)->getGender() == "Masculine" ? 0 : 1);
+            }
+        } else {
+            this->close();
+        }
     } else {
-        clients->at(index)->setName(name.toStdString());
-        clients->at(index)->setBirthday(birthday.toStdString());
-        clients->at(index)->setGender(gender.toStdString());
-    this->close();
+        RegularClient* r = dynamic_cast<RegularClient*>(clients->at(index));
+        r->setName(name.toStdString());
+        r->setBirthday(birthday.toStdString());
+        r->setGender(gender.toStdString());
+        QMessageBox::information(this, "Edit", "Successfully edited");
+        int answer;
+        answer = QMessageBox::question(this, "Continue", "Do you want to continue editing?", QMessageBox::Yes, QMessageBox::No);
+        if (answer == QMessageBox::Yes){
+            CoorporateClient* c = dynamic_cast<CoorporateClient*>(clients->at(0));
+            PremiumClient* p = dynamic_cast<PremiumClient*>(clients->at(0));
+            RegularClient* r = dynamic_cast<RegularClient*>(clients->at(0));
+            if (c){
+                ui->cb_client->setCurrentIndex(0);
+                ui->le_name->setText(QString::fromStdString(clients->at(0)->getName().c_str()));
+                ui->le_birthday->setText(clients->at(0)->getBirthDay().c_str());
+                ui->cb_gender->setCurrentIndex(clients->at(0)->getGender() == "Masculine" ? 0 : 1);
+                ui->le_company->setText(c->getCompany().c_str());
+                ui->sb_years->setEnabled(false);
+            }
+            if (p){
+                ui->cb_client->setCurrentIndex(0);
+                ui->le_name->setText(QString::fromStdString(clients->at(0)->getName().c_str()));
+                ui->le_birthday->setText(clients->at(0)->getBirthDay().c_str());
+                ui->cb_gender->setCurrentIndex(clients->at(0)->getGender() == "Masculine" ? 0 : 1);
+                ui->sb_years->setValue(p->getYears());
+                ui->le_company->setEnabled(false);
+            }
+            if (r){
+                ui->cb_client->setCurrentIndex(0);
+                ui->le_name->setText(QString::fromStdString(clients->at(0)->getName().c_str()));
+                ui->le_birthday->setText(clients->at(0)->getBirthDay().c_str());
+                ui->cb_gender->setCurrentIndex(clients->at(0)->getGender() == "Masculine" ? 0 : 1);
+                ui->sb_years->setEnabled(false);
+                ui->le_company->setEnabled(false);
+            }
+        } else {
+            this->close();
+        }
     }
 }
 

@@ -39,6 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     drinks->push_back(new NonAlcoholic("Coke", 3.40, "Can"));
     drinks->push_back(new NonAlcoholic("Lemonade", 4, ""));
     drinks->push_back(new NonAlcoholic("Iced Tea", 4, ""));
+    drinks->push_back(new NonAlcoholic("Water", 2.5, "Mineral"));
     drinks->push_back(new Alcoholic("Wine", 7.50, "Red"));
     drinks->push_back(new Alcoholic("Wine", 7.50, "White"));
     drinks->push_back(new Alcoholic("Heineken", 3.75, "Beer"));
@@ -142,9 +143,9 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     //Corporate
-    QFile file("./c_clients.txt");
+    QFile file("/Users/katherinelozano/Desktop/Progra3/Project2/c_clients.txt");
     if (!file.open(QIODevice::WriteOnly)){
-        QMessageBox::information(this, "Warning", file.errorString());
+        //QMessageBox::information(this, "Warning", file.errorString());
     } else {
         for (unsigned long i = 0; i < clients->size(); i++){
             CoorporateClient* cc = dynamic_cast<CoorporateClient*>(clients->at(i));
@@ -161,12 +162,11 @@ MainWindow::~MainWindow()
             }
         }
     }
-    QMessageBox::information(this, "Save", "Successfully Saved");
     file.close();
     //Premium
-    QFile file2("./p_clients.txt");
+    QFile file2("/Users/katherinelozano/Desktop/Progra3/Project2/p_clients.txt");
     if (!file2.open(QIODevice::WriteOnly)){
-        QMessageBox::information(this, "Warning", file2.errorString());
+        //QMessageBox::information(this, "Warning", file2.errorString());
     } else {
         for (unsigned long i = 0; i < clients->size(); i++){
             PremiumClient* pc = dynamic_cast<PremiumClient*>(clients->at(i));
@@ -183,12 +183,11 @@ MainWindow::~MainWindow()
             }
         }
     }
-    QMessageBox::information(this, "Save", "Successfully Saved");
     file2.close();
     //Regular
-    QFile file3("r_clients.txt");
+    QFile file3("/Users/katherinelozano/Desktop/Progra3/Project2/r_clients.txt");
     if (!file3.open(QIODevice::WriteOnly)){
-        QMessageBox::information(this, "Warning", file3.errorString());
+        //QMessageBox::information(this, "Warning", file3.errorString());
     } else {
         for (unsigned long i = 0; i < clients->size(); i++){
             RegularClient* rc = dynamic_cast<RegularClient*>(clients->at(i));
@@ -203,7 +202,6 @@ MainWindow::~MainWindow()
             }
         }
     }
-    QMessageBox::information(this, "Save", "Successfully Saved");
     file3.close();
     delete ui;
 }

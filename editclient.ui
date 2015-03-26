@@ -38,8 +38,11 @@
      <height>24</height>
     </rect>
    </property>
+   <property name="minimum">
+    <number>0</number>
+   </property>
    <property name="value">
-    <number>1</number>
+    <number>0</number>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
