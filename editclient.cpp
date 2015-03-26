@@ -48,8 +48,8 @@ EditClient::EditClient(vector<Client*>* clients, QWidget *parent) :
     } else {
             ui->sb_years->setValue(0);
     }
-    ui->le_company->text()!="" ? ui->le_company->setEnabled(true) : ui->le_company->setEnabled(false);
-    ui->sb_years->value()!=0 ? ui->sb_years->setEnabled(true) : ui->sb_years->setEnabled(false);
+    c ? ui->le_company->setEnabled(true) : ui->le_company->setEnabled(false);
+    p ? ui->sb_years->setEnabled(true) : ui->sb_years->setEnabled(false);
 }
 
 EditClient::~EditClient()
@@ -215,6 +215,6 @@ void EditClient::on_cb_client_currentIndexChanged(int index)
     } else {
             ui->sb_years->setValue(0);
     }
-    ui->le_company->text()!="" ? ui->le_company->setEnabled(true) : ui->le_company->setEnabled(false);
-    ui->sb_years->value()!=0 ? ui->sb_years->setEnabled(true) : ui->sb_years->setEnabled(false);
+    c ? ui->le_company->setEnabled(true) : ui->le_company->setEnabled(false);
+    p ? ui->sb_years->setEnabled(true) : ui->sb_years->setEnabled(false);
 }

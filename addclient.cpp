@@ -42,7 +42,7 @@ void AddClient::on_pushButton_clicked()
     } else if (type == "Premium"){
         int years;
         years = ui->sb_years->value();
-        PremiumClient* pc = new PremiumClient(name.toStdString(), birthday.toStdString(), gender.toStdString(), years == 0 ? 1 : years);
+        PremiumClient* pc = new PremiumClient(name.toStdString(), birthday.toStdString(), gender.toStdString(), years);
         clients->push_back(pc);
         QMessageBox::information(this, "Create", "Successfully created");
         this->close();
