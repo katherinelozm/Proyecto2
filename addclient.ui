@@ -216,7 +216,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>January 1, 1989</string>
+    <string>01/05/89</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">

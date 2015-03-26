@@ -17,6 +17,8 @@
 #include <string>
 #include <iostream>
 #include <QMessageBox>
+#include <QFile>
+#include <QTextStream>
 
 using namespace std;
 
@@ -31,12 +33,13 @@ MainWindow::MainWindow(QWidget *parent) :
     bills = new vector<Bill*>();
     meals->push_back(new Meal("Grilled Steak", 30, "16 oz"));
     meals->push_back(new Meal("Pork Chops", 20, ""));
-    meals->push_back(new Meal("Grilled Chicken", 23, "Chicken Breast"));
-    meals->push_back(new Meal("Shrimps", 35, "Garlic/Breaded/Grilled"));
+    meals->push_back(new Meal("Grilled Chicken", 23, ""));
+    meals->push_back(new Meal("Shrimps", 35, ""));
     drinks->push_back(new NonAlcoholic("Coke", 3.50, "Bottle"));
-    drinks->push_back(new NonAlcoholic("Coke", 3.50, "Can"));
+    drinks->push_back(new NonAlcoholic("Coke", 3.40, "Can"));
     drinks->push_back(new NonAlcoholic("Lemonade", 4, ""));
-    drinks->push_back(new Alcoholic("Wine", 7.50, "Merlot"));
+    drinks->push_back(new NonAlcoholic("Iced Tea", 4, ""));
+    drinks->push_back(new Alcoholic("Wine", 7.50, "Red"));
     drinks->push_back(new Alcoholic("Wine", 7.50, "White"));
     drinks->push_back(new Alcoholic("Heineken", 3.75, "Beer"));
     //Read Clients
@@ -44,14 +47,15 @@ MainWindow::MainWindow(QWidget *parent) :
     string name;
     string birthday;
     string gender;
-    ifstream file;
-    file.open("./r_clients.txt");
-    string line;
-    int cont;
-    if (file.is_open()) {
-        while (getline(file, line)) {
-            cont = 0;
-            istringstream iss(line);
+    QFile file(":/textf/r_clients.txt");
+    if (!file.open(QIODevice::ReadOnly)){
+        QMessageBox::information(this, "Warning", file.errorString());
+    } else {
+        QTextStream in(&file);
+        while (!in.atEnd()) {
+            int cont = 0;
+            QString line = in.readLine();
+            istringstream iss(line.toStdString());
             do{
                 string s;
                 iss >> s;
@@ -66,36 +70,39 @@ MainWindow::MainWindow(QWidget *parent) :
             } while (iss);
             clients->push_back(new RegularClient(name, birthday, gender));
         }
+
     }
-    file.close();
     //Corporate
     string name2;
     string birthday2;
     string gender2;
     string company;
-    ifstream file2;
-    file2.open("./c_clients.txt");
-    string line2;
-    if (file2.is_open()) {
-        while (getline(file2, line2)) {
-            cont = 0;
-            istringstream iss(line2);
+    QFile file2(":/textf/c_clients.txt");
+    if (!file2.open(QIODevice::ReadOnly)){
+        QMessageBox::information(this, "Warning", file2.errorString());
+    } else {
+        QTextStream in(&file2);
+        while (!in.atEnd()) {
+            int cont = 0;
+            QString line = in.readLine();
+            istringstream iss(line.toStdString());
             do{
                 string s;
                 iss >> s;
                 cont++;
                 if (cont == 1){
-                    name2 = s;
+                    name = s;
                 } else if (cont == 2){
-                    birthday2 = s;
+                    birthday = s;
                 } else if (cont == 3){
-                    gender2 = s;
+                    gender = s;
                 } else if (cont == 4){
                     company = s;
                 }
             } while (iss);
-            clients->push_back(new CoorporateClient(name2, birthday2, gender2, company));
+            clients->push_back(new CoorporateClient(name, birthday, gender, company));
         }
+
     }
     file2.close();
     //Premium
@@ -103,13 +110,15 @@ MainWindow::MainWindow(QWidget *parent) :
     string birthday3;
     string gender3;
     int years;
-    ifstream file3;
-    file3.open("./p_clients.txt");
-    string line3;
-    if (file3.is_open()) {
-        while (getline(file3, line3)) {
-            cont = 0;
-            istringstream iss(line3);
+    QFile file3(":/textf/p_clients.txt");
+    if (!file3.open(QIODevice::ReadOnly)){
+        QMessageBox::information(this, "Warning", file3.errorString());
+    } else {
+        QTextStream in(&file3);
+        while (!in.atEnd()) {
+            int cont = 0;
+            QString line = in.readLine();
+            istringstream iss(line.toStdString());
             do{
                 string s;
                 iss >> s;
@@ -132,6 +141,70 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    //Corporate
+    QFile file("./c_clients.txt");
+    if (!file.open(QIODevice::WriteOnly)){
+        QMessageBox::information(this, "Warning", file.errorString());
+    } else {
+        for (unsigned long i = 0; i < clients->size(); i++){
+            CoorporateClient* cc = dynamic_cast<CoorporateClient*>(clients->at(i));
+            QTextStream out(&file);
+            if (cc){
+                out << cc->getName().c_str();
+                out << " ";
+                out << cc->getBirthDay().c_str();
+                out << " ";
+                out << cc->getGender().c_str();
+                out << " ";
+                out << cc->getCompany().c_str();
+                out << "\n";
+            }
+        }
+    }
+    QMessageBox::information(this, "Save", "Successfully Saved");
+    file.close();
+    //Premium
+    QFile file2("./p_clients.txt");
+    if (!file2.open(QIODevice::WriteOnly)){
+        QMessageBox::information(this, "Warning", file2.errorString());
+    } else {
+        for (unsigned long i = 0; i < clients->size(); i++){
+            PremiumClient* pc = dynamic_cast<PremiumClient*>(clients->at(i));
+            QTextStream out(&file2);
+            if (pc){
+                out << pc->getName().c_str();
+                out << " ";
+                out << pc->getBirthDay().c_str();
+                out << " ";
+                out << pc->getGender().c_str();
+                out << " ";
+                out << pc->getYears();
+                out << "\n";
+            }
+        }
+    }
+    QMessageBox::information(this, "Save", "Successfully Saved");
+    file2.close();
+    //Regular
+    QFile file3("r_clients.txt");
+    if (!file3.open(QIODevice::WriteOnly)){
+        QMessageBox::information(this, "Warning", file3.errorString());
+    } else {
+        for (unsigned long i = 0; i < clients->size(); i++){
+            RegularClient* rc = dynamic_cast<RegularClient*>(clients->at(i));
+            QTextStream out(&file3);
+            if (rc){
+                out << rc->getName().c_str();
+                out << " ";
+                out << rc->getBirthDay().c_str();
+                out << " ";
+                out << rc->getGender().c_str();
+                out << "\n";
+            }
+        }
+    }
+    QMessageBox::information(this, "Save", "Successfully Saved");
+    file3.close();
     delete ui;
 }
 
@@ -152,63 +225,4 @@ void MainWindow::on_pushButton_2_clicked()
     } else {
         QMessageBox::information(this, "Bill" ,"You must create a client before making a bill!");
     }
-}
-
-void MainWindow::on_MainWindow_destroyed()
-{
-    //Corporate
-    ofstream file;
-    file.open("./c_clients.txt");
-    if (file.is_open()) {
-        for (unsigned long i = 0; i < clients->size(); i++){
-            CoorporateClient* cc = dynamic_cast<CoorporateClient*>(clients->at(i));
-            if (cc){
-                file << cc->getName();
-                file << " ";
-                file << cc->getBirthDay();
-                file << " ";
-                file << cc->getGender();
-                file << " ";
-                file << cc->getCompany();
-                file << "\n";
-            }
-        }
-    }
-    file.close();
-    //Premium
-    ofstream file2;
-    file2.open("./p_clients.txt");
-    if (file2.is_open()) {
-        for (unsigned long i = 0; i < clients->size(); i++){
-            PremiumClient* pc = dynamic_cast<PremiumClient*>(clients->at(i));
-            if (pc){
-                file << pc->getName();
-                file << " ";
-                file << pc->getBirthDay();
-                file << " ";
-                file << pc->getGender();
-                file << " ";
-                file << pc->getYears();
-                file << "\n";
-            }
-        }
-    }
-    file2.close();
-    //Regular
-    ofstream file3;
-    file3.open("./r_clients.txt");
-    if (file3.is_open()) {
-        for (unsigned long i = 0; i < clients->size(); i++){
-            RegularClient* rc = dynamic_cast<RegularClient*>(clients->at(i));
-            if (rc){
-                file << rc->getName();
-                file << " ";
-                file << rc->getBirthDay();
-                file << " ";
-                file << rc->getGender();
-                file << "\n";
-            }
-        }
-    }
-    file3.close();
 }

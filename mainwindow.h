@@ -27,8 +27,6 @@ private slots:
 
     void on_pushButton_2_clicked();
 
-    void on_MainWindow_destroyed();
-
 private:
     Ui::MainWindow *ui;
     vector<Client*>* clients;

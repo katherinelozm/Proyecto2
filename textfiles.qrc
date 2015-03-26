@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/textf">
+        <file>c_clients.txt</file>
+        <file>p_clients.txt</file>
+        <file>r_clients.txt</file>
+    </qresource>
+</RCC>

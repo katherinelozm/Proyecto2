@@ -56,6 +56,7 @@ FORMS    += mainwindow.ui \
     reports.ui
 
 RESOURCES += \
-    pictures.qrc
+    pictures.qrc \
+    textfiles.qrc
 
 DISTFILES +=
